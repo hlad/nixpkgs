@@ -443,11 +443,16 @@ like `cabal-install`. If you have it installed on your system anyway, it will
 work as expected in the `nix-shell` (as long as you don't use `--pure`).
 
 <!-- TODO(@sternenseemann): this doesn't work in practice (anymore?)
+This topic needs to be investigated again; Deleting the local hackage db is
+an easy workaround (ty @maralorn), but some useful features of cabal2nix
+depend on it (i.e. cabal2nix cabal://pkg-version).
 
 You can make sure that `cabal-install` doesn't download or build any packages
 not provided using Nix by passing `--offline`. There is of course a better way
 to add any number of development tools to your `nix-shell` which we'll discuss
-later. -->
+later.
+
+-->
 
 Often you won't work on a package that is already part of `haskellPackages` or
 Hackage, so we first need to write a Nix expression to obtain the development
