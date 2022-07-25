@@ -840,6 +840,10 @@ benchmark component.
 
 ### Overriding the entire package set
 
+<!--
+
+TODO(@NixOS/haskell): finish these planned sections
+
 ## Import-from-Derivation helpers
 
 * `callCabal2nix`
@@ -864,6 +868,20 @@ to check if the change you have in mind may be backported.
 This section focuses on how to backport a package update (e.g. a
 bug fix or security release). Fixing a broken package works like
 it does for the unstable branches.
+
+-->
+
+## F.A.Q. {#sec-haskell-faq}
+
+### Why is topic X not covered in this section?
+
+We have been working on [moving the nixpkgs Haskell documentation back into the
+nixpkgs manual](https://github.com/NixOS/nixpkgs/issues/121403). Since this
+process has not been completed yet, you may find some topics missing here
+covered in the old [haskell4nix docs](https://haskell4nix.readthedocs.io/).
+
+If you feel any important topic is not documented at all, feel free to comment
+on the issue linked above.
 
 [stackage-nightly]: https://www.stackage.org/nightly
 [cabal2nix]: https://github.com/nixos/cabal2nix
