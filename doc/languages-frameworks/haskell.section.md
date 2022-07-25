@@ -436,7 +436,7 @@ $ nix-shell -A haskellPackages.random.env '<nixpkgs>'
     …
 ```
 
-As you can see, the environment contains a GHC which is , so it finds all
+As you can see, the environment contains a GHC which is set up so it finds all
 dependencies of `random`. Since nixpkgs only relies on `Setup.hs` for actually
 building the package, the environment doesn't contain familiar development tools
 like `cabal-install`. If you have it installed on your system anyway, it will
