@@ -57,11 +57,11 @@ are their normal name with their version appended after an underscore, e.g.
 populated, read the section [Package set
 generation](#sec-haskell-package-set-generation).
 
-Most of the packages contained in `haskellPackages` don't actually build and are
-marked as broken semi-automatically. Most of those packages are deprecated or
-unmaintained, but sometimes packages that should, don't build. Very often fixing
-them is not a lot of work. How you can help with that is described in [Fixing a
-broken package](#sec-haskell-fixing-a-broken-package).
+Roughly half of the 16K packages contained in `haskellPackages` don't actually
+build and are marked as broken semi-automatically. Most of those packages are
+deprecated or unmaintained, but sometimes packages that should, don't build.
+Very often fixing them is not a lot of work. How you can help with that is
+described in [Fixing a broken package](#sec-haskell-fixing-a-broken-package).
 
 `haskellPackages` is built with our default compiler, but we also provide other
 releases of GHC and package sets built with them. You can list all available
@@ -873,7 +873,7 @@ it does for the unstable branches.
 
 ## F.A.Q. {#sec-haskell-faq}
 
-### Why is topic X not covered in this section?
+### Why is topic X not covered in this section? Why is section Y missing?
 
 We have been working on [moving the nixpkgs Haskell documentation back into the
 nixpkgs manual](https://github.com/NixOS/nixpkgs/issues/121403). Since this
