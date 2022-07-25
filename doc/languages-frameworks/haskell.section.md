@@ -482,6 +482,8 @@ enter a shell with all the package's dependencies available using `nix-shell
 -A env default.nix`. If you have `cabal-install` installed globally, it'll work
 inside the shell as expected.
 
+### shellFor {#ssec-haskell-shellFor}
+
 Having to install tools globally is obviously not great, especially if you want
 to provide a batteries-included `shell.nix` with your project. Luckily there's a
 proper tool for making development environments out of packages' build
