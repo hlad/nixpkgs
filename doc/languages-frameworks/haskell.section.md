@@ -506,10 +506,10 @@ dependencies as well. Defaults to `[]`.
 <!-- TODO link specifying deps section here -->
 
 `withHoogle`
-: If this is true, a `hoogle` instance will be built and added to
-`nativeBuildInputs`. Additionally, its database will be populated with the
-included dependencies, so you'll be able search through the documentation of
-your dependencies. Defaults to `false`.
+: If this is true, `hoogle` will be added to `nativeBuildInputs`.
+Additionally, its database will be populated with all included dependencies,
+so you'll be able search through the documentation of your dependencies.
+Defaults to `false`.
 
 `genericBuilderArgsModifier`
 : This argument accepts a function allowing you to modify the arguments passed
@@ -518,7 +518,7 @@ to `mkDerivation` in order to create the development environment. For example,
 dependencies. Defaults to `lib.id`.
 
 `doBenchmark`
-: This is a shortcut for setting `doBenchmark` via `genericBuilderArgsModifier`.
+: This is a shortcut for enabling `doBenchmark` via `genericBuilderArgsModifier`.
 Setting it to `true` will cause the development environment to include all
 benchmark dependencies which would be excluded by default. Defaults to `false`.
 
