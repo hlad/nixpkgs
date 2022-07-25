@@ -10,7 +10,7 @@ made due to self-imposed restrictions in nixpkgs, to lessen the maintenance
 effort and improve performance. Therefore, it may be advantageous to use an
 alternative to the Haskell infrastructure in nixpkgs for development
 environments in some cases. The main limitations are that we only provide
-first-class support for the default compiler (currently GHC 8.10.7) and usually
+first-class support for the default compiler (currently GHC 9.0.2) and usually
 only provide a default and (if different) the latest version of a haskell
 package.
 
@@ -72,17 +72,19 @@ $ nix-env -f "<nixpkgs>" -qaP -A haskell.compiler
 haskell.compiler.ghc8107                 ghc-8.10.7
 haskell.compiler.ghc884                  ghc-8.8.4
 haskell.compiler.ghc902                  ghc-9.0.2
-haskell.compiler.ghc922                  ghc-9.2.2
+haskell.compiler.ghc923                  ghc-9.2.3
 haskell.compiler.ghcHEAD                 ghc-9.3.20220406
-haskell.compiler.ghc8102Binary           ghc-binary-8.10.2
 haskell.compiler.ghc8102BinaryMinimal    ghc-binary-8.10.2
+haskell.compiler.ghc8102Binary           ghc-binary-8.10.2
 haskell.compiler.ghc8107Binary           ghc-binary-8.10.7
 haskell.compiler.ghc8107BinaryMinimal    ghc-binary-8.10.7
 haskell.compiler.ghc865Binary            ghc-binary-8.6.5
+haskell.compiler.ghc922BinaryMinimal     ghc-binary-9.2.2
+haskell.compiler.ghc922Binary            ghc-binary-9.2.2
 haskell.compiler.integer-simple.ghc8107  ghc-integer-simple-8.10.7
 haskell.compiler.integer-simple.ghc884   ghc-integer-simple-8.8.4
 haskell.compiler.native-bignum.ghc902    ghc-native-bignum-9.0.2
-haskell.compiler.native-bignum.ghc922    ghc-native-bignum-9.2.2
+haskell.compiler.native-bignum.ghc923    ghc-native-bignum-9.2.3
 haskell.compiler.native-bignum.ghcHEAD   ghc-native-bignum-9.3.20220406
 haskell.compiler.ghcjs                   ghcjs-8.10.7
 ```
@@ -90,7 +92,7 @@ haskell.compiler.ghcjs                   ghcjs-8.10.7
 Every of those compilers has a corresponding attribute set built completely
 using it. However, the non-standard package sets are not tested regularly and
 have less working packages as a result. The corresponding package set for GHC
-9.2.2 is `haskell.packages.ghc922` (in fact `haskellPackages` is just an alias
+9.2.3 is `haskell.packages.ghc923` (in fact `haskellPackages` is just an alias
 for `haskell.packages.ghc902`):
 
 ```console
@@ -424,13 +426,13 @@ packaged version match):
 $ cd ~/src/random
 $ nix-shell -A haskellPackages.random.env '<nixpkgs>'
 [nix-shell:~/src/random]$ ghc-pkg list
-/nix/store/5pss2hw4qlmc4xj7ybp2x16c29ccv47x-ghc-8.10.7-with-packages/lib/ghc-8.10.7/package.conf.d
-    Cabal-3.2.1.0
+/nix/store/x5n9d7wpnykqxml13ca77yxcgcmhaa0b-ghc-9.0.2-with-packages/lib/ghc-9.0.2/package.conf.d
+    Cabal-3.4.1.0
     array-0.5.4.0
-    base-4.14.3.0
+    base-4.15.1.0
     binary-0.8.8.0
     …
-    ghc-8.10.7
+    ghc-9.0.2
     …
 ```
 
@@ -869,8 +871,8 @@ it does for the unstable branches.
 [haddock]: https://www.haskell.org/haddock/
 [haddock-hoogle-option]: https://haskell-haddock.readthedocs.io/en/latest/invoking.html#cmdoption-hoogle
 [haddock-hyperlinked-source-option]: https://haskell-haddock.readthedocs.io/en/latest/invoking.html#cmdoption-hyperlinked-source
-[profiling]: https://downloads.haskell.org/~ghc/8.10.7/docs/html/users_guide/profiling.html
-[haskell-program-coverage]: https://downloads.haskell.org/~ghc/8.10.7/docs/html/users_guide/profiling.html#observing-code-coverage
+[profiling]: https://downloads.haskell.org/~ghc/9.0.2/docs/html/users_guide/profiling.html
+[haskell-program-coverage]: https://downloads.haskell.org/~ghc/9.0.2/docs/html/users_guide/profiling.html#observing-code-coverage
 [profiling-detail]: https://cabal.readthedocs.io/en/latest/cabal-project.html#cfg-field-profiling-detail
 [jailbreak-cabal]: https://github.com/peti/jailbreak-cabal/
 [cpphs]: https://hackage.haskell.org/package/cpphs
