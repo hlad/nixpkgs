@@ -822,7 +822,7 @@ ugly, and we may want to deprecate them at some point. -->
 `addTestToolDepends list drv`
 : Adds the `list` of derivations to the `testToolDepends` argument for `drv`.
 
-`addPkgConfigDepends list drv`
+`addPkgconfigDepends list drv`
 : Adds the `list` of derivations to the `pkg-configDepends` argument for `drv`.
 
 `addSetupDepends list drv`
