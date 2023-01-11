@@ -10,7 +10,7 @@ made due to self-imposed restrictions in nixpkgs, to lessen the maintenance
 effort and improve performance. Therefore, it may be advantageous to use an
 alternative to the Haskell infrastructure in nixpkgs for development
 environments in some cases. The main limitations are that we only provide
-first-class support for the default compiler (currently GHC 9.0.2) and usually
+first-class support for the default compiler (currently GHC 9.2.4) and usually
 only provide a default and (if different) the latest version of a haskell
 package.
 
@@ -34,12 +34,12 @@ packages, so it is hidden from `nix-env -qa` by default for performance reasons.
 You can still list all packages in the set like this, though:
 
 ```console
-$ nix-env -f "<nixpkgs>" -qaP -A haskellPackages
+$ nix-env -f '<nixpkgs>' -qaP -A haskellPackages
 haskellPackages.a50                                                         a50-0.5
 haskellPackages.AAI                                                         AAI-0.2.0.1
+haskellPackages.aasam                                                       aasam-0.2.0.0
 haskellPackages.abacate                                                     abacate-0.0.0.0
 haskellPackages.abc-puzzle                                                  abc-puzzle-0.2.1
-haskellPackages.abcBridge                                                   abcBridge-0.15
 …
 ```
 
@@ -53,7 +53,7 @@ part of [Stackage Nightly][stackage-nightly] as the default
 version. For all other packages we use the latest version from Hackage.
 Sometimes alternative versions of packages are provided whose attribute names
 are their normal name with their version appended after an underscore, e.g.
-`Cabal_3_4_0_0`. If you are interested in details how the package set is
+`Cabal_3_8_1_0`. If you are interested in details how the package set is
 populated, read the section [Package set
 generation](#sec-haskell-package-set-generation).
 
@@ -68,40 +68,53 @@ releases of GHC and package sets built with them. You can list all available
 compilers like this:
 
 ```console
-$ nix-env -f "<nixpkgs>" -qaP -A haskell.compiler
-haskell.compiler.ghc8107                 ghc-8.10.7
-haskell.compiler.ghc884                  ghc-8.8.4
-haskell.compiler.ghc902                  ghc-9.0.2
-haskell.compiler.ghc923                  ghc-9.2.3
-haskell.compiler.ghcHEAD                 ghc-9.3.20220406
-haskell.compiler.ghc8102BinaryMinimal    ghc-binary-8.10.2
+$ nix-env -f '<nixpkgs>' -qaP -A haskell.compiler
+haskell.compiler.ghc810                  ghc-8.10.7
+haskell.compiler.ghc88                   ghc-8.8.4
+haskell.compiler.ghc90                   ghc-9.0.2
+haskell.compiler.ghc92                   ghc-9.2.4
+haskell.compiler.ghc925                  ghc-9.2.5
+haskell.compiler.ghc942                  ghc-9.4.2
+haskell.compiler.ghc943                  ghc-9.4.3
+haskell.compiler.ghc94                   ghc-9.4.4
+haskell.compiler.ghcHEAD                 ghc-9.7.20221224
 haskell.compiler.ghc8102Binary           ghc-binary-8.10.2
-haskell.compiler.ghc8107Binary           ghc-binary-8.10.7
+haskell.compiler.ghc8102BinaryMinimal    ghc-binary-8.10.2
 haskell.compiler.ghc8107BinaryMinimal    ghc-binary-8.10.7
+haskell.compiler.ghc8107Binary           ghc-binary-8.10.7
 haskell.compiler.ghc865Binary            ghc-binary-8.6.5
-haskell.compiler.ghc922BinaryMinimal     ghc-binary-9.2.2
-haskell.compiler.ghc922Binary            ghc-binary-9.2.2
+haskell.compiler.ghc924Binary            ghc-binary-9.2.4
+haskell.compiler.ghc924BinaryMinimal     ghc-binary-9.2.4
+haskell.compiler.integer-simple.ghc810   ghc-integer-simple-8.10.7
 haskell.compiler.integer-simple.ghc8107  ghc-integer-simple-8.10.7
 haskell.compiler.integer-simple.ghc884   ghc-integer-simple-8.8.4
+haskell.compiler.integer-simple.ghc88    ghc-integer-simple-8.8.4
+haskell.compiler.native-bignum.ghc90     ghc-native-bignum-9.0.2
 haskell.compiler.native-bignum.ghc902    ghc-native-bignum-9.0.2
-haskell.compiler.native-bignum.ghc923    ghc-native-bignum-9.2.3
-haskell.compiler.native-bignum.ghcHEAD   ghc-native-bignum-9.3.20220406
+haskell.compiler.native-bignum.ghc92     ghc-native-bignum-9.2.4
+haskell.compiler.native-bignum.ghc924    ghc-native-bignum-9.2.4
+haskell.compiler.native-bignum.ghc925    ghc-native-bignum-9.2.5
+haskell.compiler.native-bignum.ghc942    ghc-native-bignum-9.4.2
+haskell.compiler.native-bignum.ghc943    ghc-native-bignum-9.4.3
+haskell.compiler.native-bignum.ghc94     ghc-native-bignum-9.4.4
+haskell.compiler.native-bignum.ghc944    ghc-native-bignum-9.4.4
+haskell.compiler.native-bignum.ghcHEAD   ghc-native-bignum-9.7.20221224
 haskell.compiler.ghcjs                   ghcjs-8.10.7
 ```
 
 Every of those compilers has a corresponding attribute set built completely
 using it. However, the non-standard package sets are not tested regularly and
 have less working packages as a result. The corresponding package set for GHC
-9.2.3 is `haskell.packages.ghc923` (in fact `haskellPackages` is just an alias
-for `haskell.packages.ghc902`):
+9.4.4 is `haskell.packages.ghc944` (in fact `haskellPackages` is just an alias
+for `haskell.packages.ghc924`):
 
 ```console
-$ nix-env -f "<nixpkgs>" -qaP -A haskell.packages.ghc902
-haskell.packages.ghc902.a50                                                         a50-0.5
-haskell.packages.ghc902.AAI                                                         AAI-0.2.0.1
-haskell.packages.ghc902.abacate                                                     abacate-0.0.0.0
-haskell.packages.ghc902.abc-puzzle                                                  abc-puzzle-0.2.1
-haskell.packages.ghc902.abcBridge                                                   abcBridge-0.15
+$ nix-env -f '<nixpkgs>' -qaP -A haskell.packages.ghc924
+haskell.packages.ghc924.a50                                                         a50-0.5
+haskell.packages.ghc924.AAI                                                         AAI-0.2.0.1
+haskell.packages.ghc924.aasam                                                       aasam-0.2.0.0
+haskell.packages.ghc924.abacate                                                     abacate-0.0.0.0
+haskell.packages.ghc924.abc-puzzle                                                  abc-puzzle-0.2.1
 …
 ```
 
@@ -426,13 +439,13 @@ packaged version match):
 $ cd ~/src/random
 $ nix-shell -A haskellPackages.random.env '<nixpkgs>'
 [nix-shell:~/src/random]$ ghc-pkg list
-/nix/store/x5n9d7wpnykqxml13ca77yxcgcmhaa0b-ghc-9.0.2-with-packages/lib/ghc-9.0.2/package.conf.d
-    Cabal-3.4.1.0
+/nix/store/a8hhl54xlzfizrhcf03c1l3f6l9l8qwv-ghc-9.2.4-with-packages/lib/ghc-9.2.4/package.conf.d
+    Cabal-3.6.3.0
     array-0.5.4.0
-    base-4.15.1.0
-    binary-0.8.8.0
+    base-4.16.3.0
+    binary-0.8.9.0
     …
-    ghc-9.0.2
+    ghc-9.2.4
     …
 ```
 
@@ -896,8 +909,8 @@ on the issue linked above.
 [haddock]: https://www.haskell.org/haddock/
 [haddock-hoogle-option]: https://haskell-haddock.readthedocs.io/en/latest/invoking.html#cmdoption-hoogle
 [haddock-hyperlinked-source-option]: https://haskell-haddock.readthedocs.io/en/latest/invoking.html#cmdoption-hyperlinked-source
-[profiling]: https://downloads.haskell.org/~ghc/9.0.2/docs/html/users_guide/profiling.html
-[haskell-program-coverage]: https://downloads.haskell.org/~ghc/9.0.2/docs/html/users_guide/profiling.html#observing-code-coverage
+[profiling]: https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/profiling.html
+[haskell-program-coverage]: https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/profiling.html#observing-code-coverage
 [profiling-detail]: https://cabal.readthedocs.io/en/latest/cabal-project.html#cfg-field-profiling-detail
 [jailbreak-cabal]: https://github.com/peti/jailbreak-cabal/
 [cpphs]: https://hackage.haskell.org/package/cpphs
