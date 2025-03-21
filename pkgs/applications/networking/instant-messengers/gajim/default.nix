@@ -1,6 +1,6 @@
 {
   lib,
-  fetchurl,
+  fetchFromGitLab,
   gettext,
   wrapGAppsHook3,
 
@@ -42,9 +42,12 @@ python3.pkgs.buildPythonApplication rec {
   pname = "gajim";
   version = "2.0.3";
 
-  src = fetchurl {
-    url = "https://gajim.org/downloads/${lib.versions.majorMinor version}/gajim-${version}.tar.gz";
-    hash = "sha256-DbM80fyJ+jwB9Yc9vfoiDqW7Sx7MDR0OEkHdOC6nRG4=";
+  src = fetchFromGitLab {
+    domain = "dev.gajim.org";
+    owner = "gajim";
+    repo = "gajim";
+    rev = version;
+    hash = "sha256-zvuR3L+n/nZxBj7l4DvSV+HVZtGlKCM2k3ixy7TJTgs=";
   };
 
   format = "pyproject";
